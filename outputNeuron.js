@@ -1,0 +1,30 @@
+class OutputNeuron extends Neuron
+{
+    constructor(x, y, radius = 25)
+    {
+        super(x, y, radius);
+        this.activeColor = color(205, 110, 110);
+        this.inactiveColor = color(100, 50, 50);
+        this.activeColorBorder = color(211, 141, 141);
+        this.inactiveColorBorder = color(141, 91, 91);
+        this.neuronRole = "OUTPUT";
+    }
+
+    //TOOLS
+    updateNeuronStatus()
+    {
+        if(this.layerState == "WAITING" && this.checkActivationLevel())                             
+        {
+            this.layerState = "ANSWERING";
+            this.enabled = true; 
+        } 
+    }
+
+    resetNeuron()
+    {
+        super.resetNeuron();
+        this.neuronRole = "OUTPUT";
+        this.layerState = "WAITING";
+        this.enabled = false; 
+    }
+}
